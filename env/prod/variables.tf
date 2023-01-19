@@ -169,92 +169,9 @@ variable "sub_domain_1" {
   default     = "www"
 }
 
-variable "sub_domain_2" {
-  description = "name of sub domain for alb"
-  type        = string
-  default     = "loadbalancer"
-}
-
-##RDS Option Group
-variable "engine_name" {
-  type    = string
-  default = "mysql"
-}
-
-variable "major_engine_version" {
-  type    = string
-  default = "8.0"
-}
-
-##RDS
-variable "engine" {
-  type    = string
-  default = "mysql"
-}
-
-variable "engine_version" {
-  type    = string
-  default = "8.0"
-}
-
-variable "username" {
-  description = "root username of db instance"
-  type        = string
-  default     = "admin"
-}
-
-variable "password" {
-  description = "root password of db instance"
-  type        = string
-  default     = "Password1!"
-}
-
-variable "instance_class" {
-  description = "The class of db instance"
-  type        = string
-  default     = "db.t3.medium"
-}
-
-variable "storage_type" {
-  description = "The storage type of db instance"
-  type        = string
-  default     = "gp2"
-}
-
-variable "allocated_storage" {
-  description = "The allocated storage of db instance"
-  default     = 20
-}
-
-variable "multi_az" {
-  description = "multi az of db instance"
-  type        = string
-  default     = "true"
-}
-
-##SNS email address
-variable "sns_email" {
-  description = "sns email"
-}
-
-##Cloud Watch Alearm Actions
-variable "cwa_actions" {
-  description = "Cloud watch alearm actions"
-  type        = string
-  default     = "false"
-}
-
-##Cloud Watch Threshold
-variable "cwa_threshold_rds_freeablememory" {
-  description = "threshold of freeable memory on rds"
-  type        = number
-  #3.3GB
-  default = 3543348019
-}
-
-variable "cwa_threshold_rds_freeablestorage" {
-  description = "threshold of freeable storage on rds"
-  type        = number
-  #17GB
-  default = 18253611008
+##Docker Image Name
+variable "image_name" {
+  description = "docker image name"
+  type = "string"
+  default = ""
 }
