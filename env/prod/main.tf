@@ -22,14 +22,8 @@ module "prod" {
   public_subnet_ids       = module.prod.public_subnet_ids
   dmz_subnet_ids          = module.prod.dmz_subnet_ids
   private_subnet_ids      = module.prod.private_subnet_ids
-  ami                     = var.ami
-  instance_type_web       = var.instance_type_web
-  volume_type_web         = var.volume_type_web
-  volume_size_web         = var.volume_size_web
-  key_name_web            = var.key_name_web
-  public_key_path_web     = var.public_key_path_web
-  instance_ids            = module.prod.instance_ids
   #zone_name          = var.zone_name
   sub_domain_1                      = var.sub_domain_1
   image_name = var.image_name
+  ecr_repository_url = module.prod.ecr_repository_url
 }

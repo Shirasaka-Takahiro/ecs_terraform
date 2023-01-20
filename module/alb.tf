@@ -5,7 +5,6 @@ resource "aws_lb" "alb" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb.id]
   subnets            = var.public_subnet_ids
-  ip_address_type    = "ipv4"
 
   access_logs {
     bucket  = aws_s3_bucket.bucket_alb_access_log.id
@@ -21,7 +20,7 @@ resource "aws_lb" "alb" {
 ##Target Group
 resource "aws_lb_target_group" "tg" {
   name             = "${var.general_config["project"]}-${var.general_config["env"]}-tg"
-  target_type      = "instance"
+  target_type      = "ip"
   protocol_version = "HTTP1"
   port             = "80"
   protocol         = "HTTP"
@@ -71,12 +70,4 @@ resource "aws_lb_listener" "alb-https-listener" {
     type = "forward"
     target_group_arn = aws_lb_target_group.tg.arn
   }
-}
-
-##Attach target group to the alb
-resource "aws_lb_target_group_attachment" "attach_tg-to-alb" {
-  count = length(var.instance_ids)
-  target_id        = element(var.instance_ids, count.index % 2)
-  target_group_arn = aws_lb_target_group.tg.arn
-  port             = 80
 }
