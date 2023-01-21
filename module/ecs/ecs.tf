@@ -11,7 +11,7 @@ resource "aws_ecs_cluster" "cluster" {
 ##Task Definition
 resource "aws_ecs_task_definition" "task" {
   family                = "${var.general_config["project"]-var.general_config["env"]}-task-fargate-web01"
-  container_definitions = file("container_definitions.json", { ecr_repository_url = var.ecr_repository_url })
+  container_definitions = file("./container_definitions.json", { ecr_repository_url = var.ecr_repository_url })
   cpu                   = "256"
   memory                = "512"
   network_mode          = "awsvpc"

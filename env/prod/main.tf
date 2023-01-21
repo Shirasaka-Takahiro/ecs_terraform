@@ -24,6 +24,7 @@ module "prod" {
   private_subnet_ids      = module.prod.private_subnet_ids
   #zone_name          = var.zone_name
   sub_domain_1                      = var.sub_domain_1
+  repository_name = var.repository_name
+  repository_url = module.prod.repository_url
   image_name = var.image_name
-  ecr_repository_url = module.prod.ecr_repository_url
 }

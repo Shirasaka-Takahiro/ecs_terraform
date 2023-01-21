@@ -14,8 +14,10 @@ variable "dmz_subnet_ids" {}
 variable "private_subnet_ids" {}
 #variable "zone_name" {}
 variable "sub_domain_1" {}
+variable "repository_name" {}
+variable "repository_url" {}
 variable "image_name" {}
-variable "ecr_repository_url" {}
+#variable "docker_dir" {}
 provider "aws" {
   alias  = "us-east-1"
   region = var.regions["virginia"]

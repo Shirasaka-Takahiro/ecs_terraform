@@ -2,7 +2,7 @@
 variable "general_config" {
   type = map(any)
   default = {
-    project = "shira-test"
+    project = "example"
     env     = "prod"
   }
 }
@@ -108,8 +108,23 @@ variable "sub_domain_1" {
   default     = "www"
 }
 
-##Docker Image Name
-variable "image_name" {
-  description = "docker image name"
+##ECR Image Name
+variable "repository_name" {
+  description = "ECR repository name"
   type = string
+  default     = "example"
 }
+
+##Dockerimage Name
+variable "image_name" {
+  description = "Dockerimage name"
+  type = string
+  default     = "takahiros991/apache_terraform:v1"
+}
+
+##Dockerfile Directory
+#variable "docker_dir" {
+#  description = "directory where the Dockerfile is"
+#  type = string
+#  default     = "."
+#}
