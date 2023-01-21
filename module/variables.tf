@@ -15,7 +15,6 @@ variable "private_subnet_ids" {}
 #variable "zone_name" {}
 variable "sub_domain_1" {}
 variable "repository_name" {}
-variable "repository_url" {}
 variable "image_name" {}
 #variable "docker_dir" {}
 provider "aws" {
