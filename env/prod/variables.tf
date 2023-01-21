@@ -119,7 +119,7 @@ variable "repository_name" {
 variable "image_name" {
   description = "Dockerimage name"
   type = string
-  default     = "takahiros991/apache_terraform:v1"
+  default     = "takahiros991/apache_terraform"
 }
 
 ##Dockerfile Directory

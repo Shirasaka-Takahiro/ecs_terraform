@@ -27,3 +27,10 @@ module "prod" {
   repository_name = var.repository_name
   image_name = var.image_name
 }
+
+module "ecs" {
+  source = "../../module/ecs"
+
+  general_config          = var.general_config
+  regions                 = var.regions
+}
