@@ -1,6 +1,3 @@
-##AWS Account ID
-data "aws_caller_identity" "current" {}
-
 ##ECR Repository
 resource "aws_ecr_repository" "web01" {
   name = var.repository_name
@@ -10,6 +7,9 @@ resource "aws_ecr_repository" "web01" {
     scan_on_push = true
   }
 }
+
+##AWS Account ID
+data "aws_caller_identity" "current" {}
 
 ##Build up Dockerfile  
 resource "null_resource" "web01" {

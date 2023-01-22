@@ -1,7 +1,7 @@
 [
     {
-        "name": "web01",
-        "image": "${repository_url}",
+        "name": "example-prod-web01",
+        "image": "${ecr_repository_url}",
         "essential": true,
         "portMappings": [
             {

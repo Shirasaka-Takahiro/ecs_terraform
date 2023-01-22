@@ -1,6 +1,6 @@
 ##Cluster
 resource "aws_ecs_cluster" "cluster" {
-  name = "${var.general_config["project"]}-${var.general_config[env]}-cluster-fargate-web01"
+  name = "${var.general_config["project"]}-${var.general_config["env"]}-cluster-fargate-web01"
  
   setting {
     name  = "containerInsights"
@@ -10,8 +10,8 @@ resource "aws_ecs_cluster" "cluster" {
  
 ##Task Definition
 resource "aws_ecs_task_definition" "task" {
-  family                = "${var.general_config["project"]-var.general_config["env"]}-task-fargate-web01"
-  container_definitions = file("./container_definitions.json", { ecr_repository_url = aws_ecr_repository.web01.repository_url })
+  family                = "${var.general_config["project"]}-${var.general_config["env"]}-task-fargate-web01"
+  container_definitions = templatefile("${path.module}/ecs_json/container_definitions.json", { ecr_repository_url = aws_ecr_repository.web01.repository_url })
   cpu                   = var.fargate_cpu
   memory                = var.fargate_memory
   network_mode          = "awsvpc"
@@ -32,13 +32,13 @@ resource "aws_ecs_service" "service" {
   platform_version = "1.4.0"
  
   load_balancer {
-    target_group_arn = aws_lb_target_group.alb.arn
+    target_group_arn = aws_lb_target_group.tg.arn
     container_name   = "${var.general_config["project"]}-${var.general_config["env"]}-web01"
     container_port   = "80"
   }
  
   network_configuration {
-    subnets = var.public_subnets
+    subnets = var.public_subnet_ids
     security_groups = [
       aws_security_group.common.id
     ]
