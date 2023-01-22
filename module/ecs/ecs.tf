@@ -12,8 +12,8 @@ resource "aws_ecs_cluster" "cluster" {
 resource "aws_ecs_task_definition" "task" {
   family                = "${var.general_config["project"]-var.general_config["env"]}-task-fargate-web01"
   container_definitions = file("./container_definitions.json", { ecr_repository_url = aws_ecr_repository.web01.repository_url })
-  cpu                   = "256"
-  memory                = "512"
+  cpu                   = var.fargate_cpu
+  memory                = var.fargate_memory
   network_mode          = "awsvpc"
   execution_role_arn    = aws_iam_role.fargate_task_execution.arn
  

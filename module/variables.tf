@@ -17,6 +17,8 @@ variable "sub_domain_1" {}
 variable "repository_name" {}
 variable "image_name" {}
 #variable "docker_dir" {}
+variable "fargate_cpu" {}
+variable "fargate_memory" {}
 provider "aws" {
   alias  = "us-east-1"
   region = var.regions["virginia"]
