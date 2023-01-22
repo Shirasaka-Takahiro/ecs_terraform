@@ -111,14 +111,14 @@ variable "sub_domain_1" {
 ##ECR Image Name
 variable "repository_name" {
   description = "ECR repository name"
-  type = string
+  type        = string
   default     = "example"
 }
 
 ##Dockerimage Name
 variable "image_name" {
   description = "Dockerimage name"
-  type = string
+  type        = string
   default     = "takahiros991/apache_terraform"
 }
 
@@ -128,3 +128,17 @@ variable "image_name" {
 #  type = string
 #  default     = "."
 #}
+
+##Fargate CPU
+variable "fargate_cpu" {
+  description = "fargate cpu"
+  type        = string
+  default     = "256"
+}
+
+##Fargate Memory
+variable "fargate_memory" {
+  description = "fargate memory"
+  type        = string
+  default     = "512"
+}
