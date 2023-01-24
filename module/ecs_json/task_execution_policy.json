@@ -3,7 +3,12 @@
     "Statement": [
         {
             "Effect": "Allow",
-            "Action": "ssm:GetParameters",
+            "Action": [
+                "ecr:GetAuthorizationToken",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:BatchGetImage"
+            ],
             "Resource": "*"
         }
     ]

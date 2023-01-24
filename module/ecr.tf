@@ -26,6 +26,6 @@ resource "null_resource" "web01" {
   }
 
   provisioner "local-exec" {
-    command = "docker push ${aws_ecr_repository.web01.repository_url}"
+    command = "docker push ${aws_ecr_repository.web01.repository_url}:latest"
   }
 }
