@@ -11,7 +11,9 @@ resource "aws_ecs_cluster" "cluster" {
 ##Task Definition
 resource "aws_ecs_task_definition" "task" {
   family                = "${var.general_config["project"]}-${var.general_config["env"]}-task-fargate-web01"
-  container_definitions = templatefile("${path.module}/ecs_json/container_definitions.json", { ecr_repository_url = aws_ecr_repository.web01.repository_url })
+  container_definitions = templatefile("${path.module}/ecs_json/container_definitions.json", 
+  { ecr_repository_url = aws_ecr_repository.web01.repository_url, cw_log_group = aws_cloudwatch_log_group.web01.name }
+  )
   cpu                   = var.fargate_cpu
   memory                = var.fargate_memory
   network_mode          = "awsvpc"
